@@ -12,6 +12,7 @@ Build procedure:
 
 1. Pull from GIT in common eclipse
 2. Run Gradle task 'gradlew copyToLib' to populate Solace library jars from Maven central to 'libs' directory
-3. Import the project into Software AG Design Studio
-
+3. Import the project into Software AG Design Studio, make sure check on 'copy project to workspace'
+4. Switch to 'Apama Workbench' perspective
+5. Click on 'Play' to run the project
 
