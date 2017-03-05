@@ -17,7 +17,8 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // Solace Messaging API for Java Dependencies
-    compile("com.solacesystems:sol-jcsmp:10.+")
+    compile("com.solacesystems:sol-jcsmp:10.0.1")
+    compile("com.solacesystems:sol-jms:10.0.1")
 }
 
 task copyToLib(type: Copy) {
