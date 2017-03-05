@@ -1,4 +1,12 @@
 # apama-solace-sample
+Sample Apama project and Java project to demostrator JMS connection from Solace to Apama using Apama's Correlator-Integrated Messaging for JMS.
+
+A Solace JCSMP Java project is created to publish direct messages to a topic 'apamaTopic' on Solace VMR.
+
+An Apama project with JMS bundle is created to receive messages from Solace VMR.
+
+An Apama project is created using Software AG Designer. 
+
 
 ```java
 SDTMap map = prod.createMap();
