@@ -3,11 +3,9 @@ Sample Apama project and Java project to demostrator JMS connection from Solace 
 
 ![Sequence Diagram](resources/solace2apama.png)
 
+Apama CEP has been used in many real-time applications, i.e. HFT, trade surveillance, auto hedging, real-time betting, real-time analytics, real-time firewall and etc. 
 
-
-An Apama project with JMS bundle is created to receive messages from Solace VMR.
-
-An Apama project is created using Software AG Designer. 
+Solace's ultra wide bandwidth and low latency work well with Apama hand-in-hand.
 
 ##Solace JCSMP project
 - Create a session independent TextMessage - In a Session independent message ownership model, client applications can reuse messages between send operations. Messages are allocated on‑demand and are disposed explicitly by client applications when they are done with the messages.
