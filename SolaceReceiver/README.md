@@ -4,27 +4,27 @@ This Apama project is generated in Software AG Apama Community Version 9.12. The
 
 ## Project highlights: ##
 
-** Source message format:**
+**Source message format:**
 
 1. TextMessage is used to pass strings in JMS body
 2. Solace SDTMap is used to store message properties
 
-** Target event definition: ** 
+**Target event definition:** 
 
 1. Payload string field is mapped to JMS body to receive JMS body texts
 2. ExtraParam dictionary field is mapped to JMS message property to receive key-value pairs 
 
-** Message to Event mapping key: **
+**Message to Event mapping key:**
 * MESSAGE_TYPE in JMS property must identify the target event name including full package name
  
 
-** Build requirement: **
+**Build requirement:**
 
 1. Java 8
 2. Software AG Apama Community Version 9.12 or abover
 3. Gradle version 3 or above
 
-** Build procedure: ** 
+**Build procedure:** 
 
 1. Clone from GIT using CLI or Eclipse. 
 2. Run Gradle task 'gradlew copyToLib' to populate Solace library jars from Maven central to 'libs' directory
@@ -34,14 +34,15 @@ This Apama project is generated in Software AG Apama Community Version 9.12. The
 6. Click on 'Play' to run the project
 7. The correlator shall start successfully as logs are scrolling in Console
 
-** Runtime requirement:  ** 
+**Runtime requirement:** 
 
 1. Solace VMR or appliance
 2. A defined JNDI name mapped to a VPN
 3. A client profile that allows GM send/receive, endpoint create and transacted sessions
 
 
-** Log shows received JMS message: ** 
+**Log shows received JMS message:** 
+
 ```text
 2017-03-05 18:17:36.091 INFO  [27192:JMSReceiver:solace-receiver-apamaTopic] - 'solace-receiver-apamaTopic' has received JMS message: Property.JMS_Solace_DeadMsgQueueEligible=false
    Property.JMS_Solace_DeliverToOne=false
