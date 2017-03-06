@@ -120,7 +120,7 @@ The test client username of “apama_user” will be required by the Apama when 
 (config)#
 ```
 
-**Apama JMS properties**
+**Apama JMS configuration**
 
 The Apama correlator-integrated messaging for JMS configuration consists of a set of XML files and .properties files.
 
@@ -152,7 +152,7 @@ JMSProviderInstallDir.solace=C\:/tools/SoftwareAG/common/lib
 classpath.solace=libs/sol-common-10.0.1.jar;libs/sol-jcsmp-10.0.1.jar;libs/sol-jms-10.0.1.jar;
 ```
 
-**Sample Apama event definition**
+**Apama event definition**
 
 ```go
 event SampleTextMessage {
