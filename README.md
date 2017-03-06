@@ -124,6 +124,8 @@ The test client username of “apama_user” will be required by the Apama when 
 (config)#
 ```
 
+##Apama CEP configuration
+
 **Apama JMS configuration**
 
 The Apama correlator-integrated messaging for JMS configuration consists of a set of XML files and .properties files.
@@ -138,7 +140,7 @@ In addition, for each JMS connection added to the configuration, there will be a
 - connectionId-spring.xml
 - connectionId-spring.properties
 
-The property file has all the custom settings and values in each use case.
+The JMS property file has all the custom settings and values in each use case.
 
 ```properties
 connectionFactory.jndiName.solace=/jms/cf/apama
@@ -154,6 +156,28 @@ defaultReceiverReliability.solace=BEST_EFFORT
 defaultSenderReliability.solace=BEST_EFFORT
 JMSProviderInstallDir.solace=C\:/tools/SoftwareAG/common/lib
 classpath.solace=libs/sol-common-10.0.1.jar;libs/sol-jcsmp-10.0.1.jar;libs/sol-jms-10.0.1.jar;
+```
+The message to event mapping is done in adapter editor. Manual changes to the mapping XML should be avoided.
+
+- JMS body is mapped to payload field
+- JMS property is mapped to extraParam field
+
+```xml
+<mapping:mapOutput>
+    <mapping:property name="eventType" value="com.solace.sample.SampleTextMessage"/>
+    <mapping:rule>
+      <mapping:source><![CDATA[${jms.body.textmessage}]]></mapping:source>
+      <mapping:target><![CDATA[${apamaEvent['payload']}]]></mapping:target>
+      <mapping:action><![CDATA[None]]></mapping:action>
+      <mapping:type><![CDATA[BINDING_PARAM]]></mapping:type>
+    </mapping:rule>
+    <mapping:rule>
+      <mapping:source><![CDATA[${jms.properties}]]></mapping:source>
+      <mapping:target><![CDATA[${apamaEvent['extraParam']}]]></mapping:target>
+      <mapping:action><![CDATA[None]]></mapping:action>
+      <mapping:type><![CDATA[BINDING_PARAM]]></mapping:type>
+    </mapping:rule>
+  </mapping:mapOutput>
 ```
 
 **Apama event definition**
@@ -187,7 +211,29 @@ monitor SampleTopicReceiver {
     }
 }
 ```
-**Apama JMS receiver properties**
+
+##Debugging Tips for Apama JMS Integration
+
+Application logs have the most runtime informaiton. Solace Java API integrates with log4j library. Apama logging is dynamic as verbosity can be tuned up and down at runtime.
+
+**Solace logging**
+By default info, logs will be written to the console. This section will focus on using log4j as the logging library and tuning Solace API logs using the log4j properties. Therefore in order to enable Solace JMS API logging, a user must do two things:
+
+- Put Log4j on the classpath
+- Create a log4j.properties configuration file in the root folder of the classpath
+
+Below is an example Log4j properties file that will enable debug logging within the Solace API.
+
+```properties
+log4j.rootCategory=INFO, stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{ABSOLUTE} %5p %t %c{2}:%L - %m%n
+log4j.category.com.solacesystems.jms=DEBUG
+log4j.category.com.solacesystems.jcsmp=DEBUG
+```
+
+**Apama logging**
 
 Some of the JMS sender/receiver properties can be toggled during development to debug application and exam JMS messages and performance matrix
  
@@ -208,6 +254,44 @@ Some of the JMS sender/receiver properties can be toggled during development to 
   <property name="logDetailedStatus" value="false"/>
 </bean>
 ```
+
+Log output shows JMS performance breakdown details, correlator status, JMS status and received JMS message
+
+```text
+2017-03-05 14:20:30.738 INFO  [23732:JMSReceiver:solace-receiver-apamaTopic] -      40% RECEIVING:    min,mean,max secs per message = 0.193150, 0.199414, 0.206460
+2017-03-05 14:20:30.738 INFO  [23732:JMSReceiver:solace-receiver-apamaTopic] -       0% MAPPING:      min,mean,max secs per message = 0.000385, 0.000874, 0.001937
+2017-03-05 14:20:30.738 INFO  [23732:JMSReceiver:solace-receiver-apamaTopic] -       0% ENQUEUING:    min,mean,max secs per batch = 0.000118, 0.000296, 0.000484
+2017-03-05 14:20:30.738 INFO  [23732:JMSReceiver:solace-receiver-apamaTopic] -       0% JMS_ACK:      min,mean,max secs per batch = 0.000000, 0.000002, 0.000003
+2017-03-05 14:20:30.738 INFO  [23732:JMSReceiver:solace-receiver-apamaTopic] -      60% R_TIMEOUTS:   min,mean,max secs per batch = 0.299299, 0.300074, 0.300875
+2017-03-05 14:20:30.738 INFO  [23732:JMSReceiver:solace-receiver-apamaTopic] -     100% TOTAL:        min,mean,max secs per batch = 0.494446, 0.500696, 0.507113
+...
+2017-03-05 15:56:24.481 INFO  [19636] - Correlator Status: sm=3 nctx=1 ls=11 rq=0 eq=0 iq=0 oq=0 icq=0 lcn="<none>" lcq=0 lct=0.0 rx=6187 tx=0 rt=1 nc=1 vm=494716 pm=23020 runq=0 si=9.0 so=0.0 srn="<none>" srq=0 (no license file)
+2017-03-05 15:56:24.484 INFO  [19636:Status] - JMS Status: s=1 tx=0 sRate=0 sOutst=0 r=1 rx=6,182 rRate=0 rWindow=0 rRedel=0 rMaxDeliverySecs=0.0 rDupsDet=0 rDupIds=0 connErr=0 jvmMB=63
+...
+2017-03-05 18:17:36.091 INFO  [27192:JMSReceiver:solace-receiver-apamaTopic] - 'solace-receiver-apamaTopic' has received JMS message: Property.JMS_Solace_DeadMsgQueueEligible=false
+   Property.JMS_Solace_DeliverToOne=false
+   Property.JMS_Solace_ElidingEligible=false
+   Property.JMS_Solace_isXML=false
+   Property.MESSAGE_CREATED=1488755856084
+   Property.MESSAGE_TYPE=com.solace.sample.SampleTextMessage
+   Property.Solace_JMS_Prop_IS_Reply_Message=false
+   JMSDestination=Topic<apamaTopic>
+   JMSMessageID=appID-5488
+   JMSRedelivered=false
+   JMSTimestamp=0
+   JMSTimestamp.toString=0
+   JMSTimestamp.approxAgeInMillis=N/A
+   JMSExpiration=0
+   JMSExpiration.toString=0
+   JMSReplyTo=<NullDestination>
+   JMSCorrelationID=null
+   JMSDeliveryMode=NON_PERSISTENT
+   JMSPriority=0
+   MessageClass=TextMessage
+   Body="msg count is 05488"
+2017-03-05 18:17:36.092 INFO  [33608] - com.solace.sample.SampleTopicReceiver [3] From JMS: com.solace.sample.SampleTextMessage("msg count is 05488",{"JMS_Solace_DeadMsgQueueEligible":"false","JMS_Solace_DeliverToOne":"false","JMS_Solace_ElidingEligible":"false","JMS_Solace_isXML":"false","MESSAGE_CREATED":"1488755856084","MESSAGE_TYPE":"com.solace.sample.SampleTextMessage","Solace_JMS_Prop_IS_Reply_Message":"false"})
+```
+
 
 ## License
 
