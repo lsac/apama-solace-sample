@@ -17,7 +17,7 @@ This Java project is a sample project to demonstrate sending messages using Sola
 5. Set up 'run' configuration to have Solace VMR IP address as argument and run
 6. Log messages start scrolling in console 
 
-**Log shows received the original solace message:** 
+**Log output shows received the original solace message:** 
 
 ```text
 Received message: 
