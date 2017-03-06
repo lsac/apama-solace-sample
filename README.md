@@ -1,5 +1,5 @@
 # apama-solace-sample
-Sample Apama project and Java project to demostrator JMS connection from Solace to Apama using Apama's Correlator-Integrated Messaging for JMS.
+Sample Apama project and Java project to demonstrate JMS connection from Solace to Apama using Apama's Correlator-Integrated Messaging for JMS.
 
 ![Sequence Diagram](resources/solace2apama.png)
 
