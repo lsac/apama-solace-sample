@@ -53,7 +53,7 @@ An Apama project is created using Software AG Designer.
 
 ##Solace router configuration
 
-**Creating a Message VPN**
+**Message VPN creation**
 
 This section outlines how to create a message-VPN called “apama” on the Solace Message Router with authentication disabled and 200MB of message spool quota for Guaranteed Messaging. This VPN name is required in the Apama configuration when connecting to the Solace message router. Actual values for authentication, message spool and other message-VPN properties may vary depending on the end application’s use case.
 
@@ -73,7 +73,7 @@ This section outlines how to create a message-VPN called “apama” on the Sola
 (config)#
 ```
 
-**Setting up Solace JNDI References**
+**Solace JNDI references creation**
 
 To enable the JMS clients to connect required by Apama, there is one JNDI object required on the Solace Message Router:
 
@@ -98,7 +98,7 @@ To enable the JMS clients to connect required by Apama, there is one JNDI object
 (config)#
 ```
 
-**Configuring Client Usernames & Profiles**
+**Client Usernames & Profiles creation**
 
 This section outlines how to update the default client-profile and how to create a client username for connecting to the Solace Message Router. For the client-profile, it is important to enable guaranteed messaging for JMS messaging, endpoint creation and transacted sessions if using transactions.
 
