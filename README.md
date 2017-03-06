@@ -1,6 +1,8 @@
 # apama-solace-sample
 Sample Apama project and Java project to demostrator JMS connection from Solace to Apama using Apama's Correlator-Integrated Messaging for JMS.
 
+![Sequence Diagram](resources/solace2apama.png)
+
 A Solace JCSMP Java project is created to publish direct messages to a topic 'apamaTopic' on Solace VMR.
 
 An Apama project with JMS bundle is created to receive messages from Solace VMR.
@@ -92,3 +94,17 @@ monitor SampleTopicReceiver {
   <property name="logDetailedStatus" value="false"/>
 </bean>
 ```
+
+## License
+
+This project is licensed under the Apache License, Version 2.0. - See the [LICENSE](LICENSE) file for details.
+
+
+## Resources
+
+For more information try these resources:
+
+- The Solace Developer Portal website at: http://dev.solace.com
+- Get a better understanding of [Solace technology](http://dev.solace.com/tech/).
+- Check out the [Solace blog](http://dev.solace.com/blog/) for other interesting discussions around Solace technology
+- Ask the [Solace community.](http://dev.solace.com/community/)
