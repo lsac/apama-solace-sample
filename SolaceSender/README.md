@@ -17,10 +17,9 @@ This Java project is a sample project to demonstrate sending messages using Sola
 5. Set up 'run' configuration to have Solace VMR IP address as argument and run
 6. Log messages start scrolling in console 
 
-**Log shows received original the solace message:** 
+**Log shows received the original solace message:** 
 
 ```text
-Receiving latency : 1
 Received message: 
 Destination:                            Topic 'apamaTopic'
 AppMessageID:                           appID-8224
@@ -36,7 +35,6 @@ User Property Map:                      2 entries
 Binary Attachment:                      len=21
   1c 15 6d 73 67 20 63 6f    75 6e 74 20 69 73 20 30    ..msg.count.is.0
   38 32 32 34 00                                        8224.
-
 
 msg count is 08224
 ```
