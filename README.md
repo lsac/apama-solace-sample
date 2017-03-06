@@ -1,5 +1,5 @@
 # apama-solace-sample
-Sample Apama project and Java project to demostrator JMS connection from Solace to Apama using Apama's Correlator-Integrated Messaging for JMS.
+Sample Apama project and Java project to demonstrate JMS connection from Solace to Apama using Apama's Correlator-Integrated Messaging for JMS.
 
 ![Sequence Diagram](resources/solace2apama.png)
 
@@ -8,7 +8,7 @@ Apama CEP has been used in many real-time applications, i.e. HFT, trade surveill
 Solace's ultra wide bandwidth and low latency messaging router works well with Apama hand-in-hand.
 
 ##Solace JCSMP project
-- Create a session independent TextMessage - In a Session independent message ownership model, client applications can reuse messages between send operations. Messages are allocated on‑demand and are disposed explicitly by client applications when they are done with the messages.
+- Create a session independent TextMessage - In a Session independent message ownership model, client applications can reuse messages between send operations. Messages are allocated on demand and are disposed explicitly by client applications when they are done with the messages.
 
         TextMessage msg = JCSMPFactory.onlyInstance().createMessage(TextMessage.class);
 
@@ -20,7 +20,7 @@ Solace's ultra wide bandwidth and low latency messaging router works well with A
 
         map.putString("MESSAGE_TYPE", "com.solace.sample.SampleTextMessage");
         
-- Add additional message properies
+- Add additional message properties
  
         map.putLong("MESSAGE_CREATED", System.currentTimeMillis());
         
@@ -57,7 +57,7 @@ Solace's ultra wide bandwidth and low latency messaging router works well with A
 
 **Message VPN creation**
 
-This section outlines how to create a message-VPN called “apama” on the Solace Message Router with authentication disabled and 200MB of message spool quota for Guaranteed Messaging. This VPN name is required in the Apama configuration when connecting to the Solace message router. Actual values for authentication, message spool and other message-VPN properties may vary depending on the end application’s use case.
+This section outlines how to create a message-VPN called "apama" on the Solace Message Router with authentication disabled and 200MB of message spool quota for Guaranteed Messaging. This VPN name is required in the Apama configuration when connecting to the Solace message router. Actual values for authentication, message spool and other message-VPN properties may vary depending on the end application use cases.
 
 ```text
 (config)# create message-vpn apama
@@ -104,7 +104,7 @@ To enable the JMS clients to connect required by Apama, there is one JNDI object
 
 This section outlines how to update the default client-profile and how to create a client username for connecting to the Solace Message Router. For the client-profile, it is important to enable guaranteed messaging for JMS messaging, endpoint creation and transacted sessions if using transactions.
 
-The test client username of “apama_user” will be required by the Apama when connecting to the Solace Message Router.
+The test client username of "apama_user" will be required by the Apama when connecting to the Solace Message Router.
 
 ```text
 (config)# client-profile default message-vpn apama
