@@ -2,7 +2,7 @@
 
 This Apama project is generated in Software AG Apama Community Version 9.12. The purpose of the project is to demonstrator how Apama can receive and map messages from Solace into Apama events. 
 
-Project highlight:
+Project highlights:
 
 Source message format:
 
@@ -15,10 +15,10 @@ Target event definition:
 2. ExtraParam dictionary field is mapped to JMS message property to receive key-value pairs 
 
 Message to Event mapping key:
-* MESSAGE_TYPE in JMS property must identify the target event name include full package name
+* MESSAGE_TYPE in JMS property must identify the target event name including full package name
  
 
-Build System requirement:
+Build requirement:
 
 1. Java 8
 2. Software AG Apama Community Version 9.12 or abover
@@ -40,7 +40,7 @@ Runtime requirement:
 2. A defined JNDI name mapped to a VPN
 3. A client profile that allows GM send/receive, endpoint create and transacted sessions
 
-
+```text
 2017-03-05 18:17:36.091 INFO  [27192:JMSReceiver:solace-receiver-apamaTopic] - 'solace-receiver-apamaTopic' has received JMS message: Property.JMS_Solace_DeadMsgQueueEligible=false
    Property.JMS_Solace_DeliverToOne=false
    Property.JMS_Solace_ElidingEligible=false
@@ -63,6 +63,6 @@ Runtime requirement:
    MessageClass=TextMessage
    Body="msg count is 05488"
 2017-03-05 18:17:36.092 INFO  [33608] - com.solace.sample.SampleTopicReceiver [3] From JMS: com.solace.sample.SampleTextMessage("msg count is 05488",{"JMS_Solace_DeadMsgQueueEligible":"false","JMS_Solace_DeliverToOne":"false","JMS_Solace_ElidingEligible":"false","JMS_Solace_isXML":"false","MESSAGE_CREATED":"1488755856084","MESSAGE_TYPE":"com.solace.sample.SampleTextMessage","Solace_JMS_Prop_IS_Reply_Message":"false"})
-
+```
 
 
