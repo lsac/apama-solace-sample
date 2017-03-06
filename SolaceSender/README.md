@@ -20,7 +20,6 @@ This Java project is a sample project to demonstrate sending messages using Sola
 **Log shows received the original solace message:** 
 
 ```text
-Receiving latency : 1
 Received message: 
 Destination:                            Topic 'apamaTopic'
 AppMessageID:                           appID-8224
