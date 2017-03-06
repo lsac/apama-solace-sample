@@ -21,7 +21,7 @@ This Apama project is generated in Software AG Apama Community Version 9.12. The
 **Build requirement:**
 
 1. Java 8
-2. Software AG Apama Community Version 9.12 or abover
+2. Software AG Apama Community Version 9.12 or above
 3. Gradle version 3 or above
 
 **Build procedure:** 
