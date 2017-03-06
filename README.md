@@ -26,6 +26,10 @@ An Apama project is created using Software AG Designer.
  
         map.putLong("MESSAGE_CREATED", System.currentTimeMillis());
         
+- Add message property to message
+
+        msg.setProperties(map);
+
 - Send off the message to a topic destination
 
         prod.send(msg, topic);
