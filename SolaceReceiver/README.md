@@ -41,7 +41,7 @@ This Apama project is generated in Software AG Apama Community Version 9.12. The
 3. A client profile that allows GM send/receive, endpoint create and transacted sessions
 
 
-**Log shows received JMS message:** 
+**Log output shows received JMS message:** 
 
 ```text
 2017-03-05 18:17:36.091 INFO  [27192:JMSReceiver:solace-receiver-apamaTopic] - 'solace-receiver-apamaTopic' has received JMS message: Property.JMS_Solace_DeadMsgQueueEligible=false
