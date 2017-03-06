@@ -76,7 +76,7 @@ public class SolaceSender {
 					SDTMap map=msg.getProperties();
 					try {
 						long ct = map.getLong("MESSAGE_CREATED");
-						System.out.println("Receiving latency : " + (System.currentTimeMillis()-ct));
+//						System.out.println("Receiving latency : " + (System.currentTimeMillis()-ct));
 					} catch (SDTException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
