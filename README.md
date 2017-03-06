@@ -217,7 +217,8 @@ monitor SampleTopicReceiver {
 Application logs have the most runtime informaiton. Solace Java API integrates with log4j library. Apama logging is dynamic as verbosity can be tuned up and down at runtime.
 
 **Solace logging**
-By default info, logs will be written to the console. This section will focus on using log4j as the logging library and tuning Solace API logs using the log4j properties. Therefore in order to enable Solace JMS API logging, a user must do two things:
+
+By default INFO leve logs will be written to the console. This section will focus on using log4j as the logging library and tuning Solace API logs using the log4j properties. Therefore in order to enable Solace JMS API logging, a user must do two things:
 
 - Put Log4j on the classpath
 - Create a log4j.properties configuration file in the root folder of the classpath
