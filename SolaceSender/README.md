@@ -1,7 +1,13 @@
 # Solace Message Sender
 
-This Java project is a sample project to demonstrate sending messages using Solace JCSMP libraries. The messages are eventually received and mapped into Apama events for real-time complex event processing.  
+This Java project is a sample project to demonstrate sending and receiving 
+direct messages using Solace JCSMP libraries. The messages are eventually 
+received and mapped into Apama events for real-time complex event processing.
 
+All messages sent from the project are received by the project from the destination topic - hence the message
+consumer dumps all the messages in logs.  
+
+##Build and Run
 **Build requirement:**
 
 1. Java 8
@@ -17,7 +23,8 @@ This Java project is a sample project to demonstrate sending messages using Sola
 5. Set up 'run' configuration to have Solace VMR IP address as argument and run
 6. Log messages start scrolling in console 
 
-**Log output shows received the original solace message:** 
+
+**Log output shows received original solace message:** 
 
 ```text
 Received message: 
