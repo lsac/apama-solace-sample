@@ -42,6 +42,7 @@ This Apama project is generated in Software AG Apama Community Version 9.12. The
 
 
 ** Log shows received JMS message: ** 
+
 ```text
 2017-03-05 18:17:36.091 INFO  [27192:JMSReceiver:solace-receiver-apamaTopic] - 'solace-receiver-apamaTopic' has received JMS message: Property.JMS_Solace_DeadMsgQueueEligible=false
    Property.JMS_Solace_DeliverToOne=false
