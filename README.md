@@ -79,11 +79,11 @@ This section outlines how to create a message-VPN called "apama" on the Solace M
 
 To enable the JMS clients to connect required by Apama, there is one JNDI object required on the Solace Message Router:
 
-- A connection factory: /jms/cf/apama
+- A connection factory: jms/cf/apama
 
 ```text
 (config)# jndi message-vpn apama
-(config-jndi)# create connection-factory /jms/cf/apama
+(config-jndi)# create connection-factory jms/cf/apama
 (config-jndi-connection-factory)# property-list messaging-properties
 (config-jndi-connection-factory-pl)# property default-delivery-mode persistent
 (config-jndi-connection-factory-pl)# exit
@@ -141,7 +141,7 @@ In addition, for each JMS connection added to the configuration, there will be a
 The JMS property file has all the custom settings and values in each use case.
 
 ```properties
-connectionFactory.jndiName.solace=/jms/cf/apama
+connectionFactory.jndiName.solace=jms/cf/apama
 jndiContext.environment.solace=java.naming.factory.initial\=com.solacesystems.jndi.SolJNDIInitialContextFactory\njava.naming.provider.url\=${jndiContext.environment.provider.url.solace}\n
 jndiContext.environment.provider.url.solace=smf\://192.168.4.167
 jndiContext.jndiAuthentication.username.solace=apama_user@apama
