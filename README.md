@@ -7,7 +7,7 @@ Apama CEP has been used in many real-time applications, i.e. HFT, trade surveill
 
 Solace has been the OPEN messaging leader in the industry, and is widely adopted by many financial firms and vertical industries. Solace's ultra wide bandwidth and low latency messaging router works well with Apama hand-in-hand.
 
-##Solace JCSMP project
+## Solace JCSMP project
 - Create a session independent TextMessage - In a Session independent message ownership model, client applications can reuse messages between send operations. Messages are allocated on demand and are disposed explicitly by client applications when they are done with the messages.
 
         TextMessage msg = JCSMPFactory.onlyInstance().createMessage(TextMessage.class);
@@ -53,7 +53,7 @@ Solace has been the OPEN messaging leader in the industry, and is widely adopted
     }
 ```
 
-##Solace router configuration
+## Solace router configuration
 
 **Message VPN creation**
 
@@ -122,7 +122,7 @@ The test client username of "apama_user" will be required by the Apama when conn
 (config)#
 ```
 
-##Apama CEP configuration
+## Apama CEP configuration
 
 **Apama JMS configuration**
 
@@ -210,7 +210,7 @@ monitor SampleTopicReceiver {
 }
 ```
 
-##Debugging Tips for Apama JMS Integration
+## Debugging Tips for Apama JMS Integration
 
 Application logs have the most runtime informaiton. Solace Java API integrates with log4j library. Apama logging is dynamic as verbosity can be tuned up and down at runtime.
 
